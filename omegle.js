@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	console.log('john');
 $('head').prepend('<link type="text/css" rel="stylesheet" href="https://raw.githubusercontent.com/johnbanx/omegle/main/omegle.css">');
 })
 //---SETTINGS---
