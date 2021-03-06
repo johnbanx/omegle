@@ -1,5 +1,6 @@
+$(document).ready(function(){
 $('head').append('<link type="text/css" rel="stylesheet" href="https://raw.githubusercontent.com/johnbanx/omegle/main/omegle.css">');
-
+})
 //---SETTINGS---
 
 //1. Theme
