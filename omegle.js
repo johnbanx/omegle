@@ -1,4 +1,4 @@
-$('head').append('<link type="text/css" rel="stylesheet" href="/static/style.css?104">');
+$('head').append('<link type="text/css" rel="stylesheet" href="https://raw.githubusercontent.com/johnbanx/omegle/main/omegle.css">');
 
 //---SETTINGS---
 
