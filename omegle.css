@@ -1,33 +1,33 @@
-h2#tagline img, div#sharebuttons, div.newchatbtnwrapper, td.sendbthcell, .statuslog span, .logsavelinks, input.shoulduselikescheckbox/*, div.logbox > div > div.logitem:first-child>p*/ {
-    display: none !important;
+#tagline img, #sharebuttons, div.newchatbtnwrapper, .statuslog span, .logsavelinks, input.shoulduselikescheckbox, #logo img {
+    display: none;
 }
 body {
-    background-color: #111 !important;
+    background-color: #111;
     overflow-x: hidden;
     font-family: 'Lato', Sans-Serif;
     height: unset !important;
     min-height: unset !important;
     inset: unset !important;
 }
-div#header {
+* {
+    font-family: "Segoe UI Emoji","Segoe UI Symbol", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji" !important;
+}
+#header {
     box-shadow: none !important;
     background-color: #000 !important;
     height: 40px !important;
 }
-h1#logo canvas {
+#logo canvas {
     filter: invert(1) brightness(1.5) saturate(0.8);
     height: 99px !important;
     width: 170px !important;
     margin-top: -30px !important;
     margin-left: -40px !important;
 }
-h1#logo img {
+#onlinecount {
     display: none;
 }
-div#onlinecount {
-    display: none;
-}
-img#videologo {
+#videologo {
     z-index: 200 !important;
     bottom: 10px !important;
 }
@@ -44,7 +44,7 @@ img#videologo {
     right: unset !important;
     bottom: unset !important;
     margin-bottom: unset !important;
-    height: calc(100% - 92px);
+    height: calc(100% - 160px);
 }
 .controlwrapper {
     margin-left: unset !important;
@@ -54,17 +54,28 @@ img#videologo {
     padding: 0 !important;
 }
 .chatmsgwrapper {
+    position: relative;
     background-color: #555 !important;
     border: none !important;
     padding: 10px;
+    height: 80px !important;
 }
-textarea.chatmsg.disabled {
-    background-color: #555 !important;
+textarea.chatmsg[disabled] {
+    background-color: #4d4d4d !important;
+    box-shadow: none;
 }
 textarea.chatmsg {
+    box-shadow: inset 0 0 6px rgb(0 0 0 / 10%);
     background-color: #444 !important;
     color: white !important;
     resize: none !important;
+    width: calc(100% - 29px);
+    border-radius: 5px;
+    padding: 3px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 80px;
 }
 .logtopicsettings a {
     color: #6cb5ff !important;
@@ -80,13 +91,16 @@ textarea.chatmsg {
     border: none !important;
     margin: 0 !important;
 }
-div#othervideospinner {
+#othervideospinner {
     height: 73px !important;
     width: 73px !important;
     z-index: 200 !important;
     inset: unset !important;
     top: calc(50% - 37px) !important;
     left: calc(50% - 37px) !important;
+}
+.youmsg, .strangermsg {
+    display: none;
 }
 .youmsg .msgsource, .strangermsg .msgsource {
     display: none;
@@ -102,7 +116,7 @@ div#othervideospinner {
 }
 .youmsg:before, .strangermsg:before {
     content: '&';
-    font-family: Scriple;
+    font-family: Scriple !important;
     font-size: 20px;
     vertical-align: top;
     box-shadow: 0 0 4px rgb(0 0 0 / 35%);
@@ -119,46 +133,57 @@ div#othervideospinner {
 .strangermsg span {
     background-color: rgb(197 112 29 / 80%);
 }
+.emojis-only {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    font-size: 30px !important;
+    padding: 0 !important;
+    letter-spacing: -4px;
+}
 .youmsg span, .strangermsg span {
-    padding: 11px;
+    display: inline-block;
+    padding: 10px;
     border-radius: 22px;
     vertical-align: top;
     box-shadow: 0 0 4px rgb(0 0 0 / 35%);
-    display: inline-block;
     color: white;
     direction: ltr;
     max-width: calc(100% - 67px);
     word-break: break-word;
+    min-height: 21px;
 }
 .disconnectbtnwrapper {
     background-color: #333333 !important;
     border: none !important;
     margin-right: unset !important;
-    border-radius: 50% !important;
+    border-radius: 25px !important;
 }
 button.disconnectbtn {
     color: white !important;
     outline: 0 !important;
-    height: 92px !important;
-    width: 92px !important;
+    width: 100% !important;
     cursor: pointer;
+    height: 50px;
 }
-/*div.logbox > div > div.logitem:first-child:after {
-    content: 'You are now chatting with a random stranger.' !important;
-    color: #999 !important;
-    font-size: 14px !important;
-    font-weight: bold !important;
-}*/
-
-div#videowrapper {
+.btnkbshortcut {
+    display: none;
+}
+#videowrapper {
     z-index: -1 !important;
     width: calc(100% - 260px) !important;
     height: calc(100vh - 56px) !important;
     position: absolute !important;
     inset: unset !important;
     right: 0px !important;
-    padding: 10px;
-    box-sizing: border-box;
+    overflow: auto;
+    background-color: #111;
+}
+#fs-container {
+    position: absolute;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    top: 10px;
+    left: 10px;
 }
 .logbox {
     position: relative !important;
@@ -177,10 +202,10 @@ div#videowrapper {
     left: 0 !important;
 }
 td.disconnectbtncell {
-    position: absolute;
-    right: -44px;
+    padding: 0 10px 10px;
 }
-button#show-chat {
+
+#show-chat {
     position: absolute !important;
     right: -40px !important;
     top: calc(50% - 76px)!important;
@@ -196,22 +221,22 @@ button#show-chat {
     border-radius: 0 5px 5px 0;
 }
 
-div#othervideocontainer1, div#selfvideocontainer1 {
+#othervideocontainer1, #selfvideocontainer1 {
     width: calc(50% - 5px)!important;
     display: inline-block!important;
     direction: ltr;
     position: relative;
 }
-div#selfvideocontainer1 {
+#selfvideocontainer1 {
     margin-left: 10px;
 }
-div#othervideocontainer2, div#selfvideocontainer2 {
+#othervideocontainer2, #selfvideocontainer2 {
     position: relative;
     width: 100%;
     padding-top: 75%;
-    z-index: -1;
+    z-index: 0;
 }
-video#othervideo, video#selfvideo {
+#othervideo, #selfvideo {
     z-index: 100 !important;
     width: 100% !important;
     height: 100% !important;
@@ -236,12 +261,13 @@ video#othervideo, video#selfvideo {
 }
 .user-data > div > .icon {
     vertical-align: middle;
-    font-family: Scriple;
+    font-family: Scriple !important;
     font-size: 40px;
     position: relative;
     cursor: pointer;
 }
-.icon.instagram {
+.icon.instagram:before {
+    content: 'I';
     color: transparent;
     background-image: linear-gradient(225deg, #7024c4, #c42c66, #e09b3d);
     -webkit-background-clip: text;
@@ -249,7 +275,8 @@ video#othervideo, video#selfvideo {
     -o-background-clip: text;
     background-clip: text;
 }
-.icon.facebook {
+.icon.facebook:before {
+    content: 'F';
     color: transparent;
     background-image: linear-gradient(#18acfd, #0062e0);
     -webkit-background-clip: text;
@@ -269,21 +296,43 @@ video#othervideo, video#selfvideo {
     z-index: -1;
     border-radius: 50%;
 }
-.icon.youtube {
+.icon.youtube:before {
+    content: 'Y';
     color: red;
-    background-clip: text;
 }
 .icon.youtube:after {
     content: '';
     position: absolute;
     background: white;
     display: block;
-    height: calc(100% - 13px);
+    height: calc(100% - 15px);
     width: calc(100% - 2px);
     top: 7px;
     left: 1px;
     z-index: -1;
     border-radius: 50%;
+}
+.icon.soundcloud:before {
+    content: 'S';
+    color: transparent;
+    background-image: linear-gradient(#ffb54d, #f74d0e);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -o-background-clip: text;
+    background-clip: text;
+}
+.icon.tiktok:before {
+    content: 't';
+    color: #55fff7;
+    mix-blend-mode: screen;
+}
+.icon.tiktok:after {
+    content: 't';
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    z-index: -1;
+    color: #f81952;
 }
 .social-animation {
     width: 0 !important;
@@ -316,16 +365,30 @@ video#othervideo, video#selfvideo {
         width: 0px;
     }
 }
-#intro > div img, div#monitoringnotice > .content, #topicsettingscontainer > div > div:last-child, td#textbtnstatus, td#videobtnstatus, td#chattypetextcell, .chattypeorcell, tr#chattypeheaderrow {
+#intro > div img, #monitoringnotice > .content, #topicsettingscontainer > div > div:last-child, #textbtnstatus, #videobtnstatus, #chattypetextcell, .chattypeorcell, #chattypeheaderrow, .asterisk {
     display: none;
 }
-div#intro {
+#intro {
     background: transparent;
     border: none;
     box-shadow: none;
     color: white;
+    max-width: 720px;
+    width: unset !important;
+    margin: 20px auto !important;
+    padding: 0 20px !important;
 }
-div#monitoringnotice {
+#mobilesitenote {
+    line-height: unset !important;
+    height: unset !important;
+    color: #999;
+    font-size: 18px !important;
+    margin: 30px 0 !important;
+}
+#topterms {
+    color: #999;
+}
+#monitoringnotice {
     background-color: #eb931f;
     border: none;
     box-shadow: none;
@@ -344,30 +407,19 @@ div#monitoringnotice {
     font-weight: 300;
     text-align: justify;
 }
-td#chattypevideocell:after {
-    content: 'Video Chat';
-    padding: 20px;
-    background-color: #6cb5ff;
-    display: inline-block;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    font-weight: 300;
-    font-size: 18px;
-}
-td#topicsettingscell {
+#topicsettingscell {
     vertical-align: middle;
 }
-td#chattypevideocell {
+#chattypevideocell {
     position: relative;
     vertical-align: middle;
 }
-td#chattypevideocell > img {
+#chattypevideocell > img {
     opacity: 0;
     width: 90px;
     height: 90px;
 }
-td#chattypevideocell:after {
+#chattypevideocell:after {
     content: 'Video Chat';
     padding: 20px;
     background: #409ffe;
@@ -394,80 +446,82 @@ input.newtopicinput {
     padding: 10px;
     box-sizing: border-box;
 }
-div#footer {
+#footer {
     display: none;
     margin: 0 310px 60px;
     text-align: justify;
     background-color: white;
     position: absolute;
     top: 65px;
+    border-radius: 20px;
 }
-div#feedback {
-    margin: 0;
-    height: calc(100vh - 135px);
+#feedback {
+    height: calc(100vh - 150px);
     overflow: auto;
-    padding: 20px;
+    margin: 0 15px 15px;
+    padding: 0 10px 10px;
 }
 #feedback > div {
     font-size: 16px !important;
     line-height: 1.5 !important;
     color: #333 !important;
 }
-p#tos {
+#feedback a {
+    color: #1fb9eb;
+}
+#tos {
     text-align: center;
 }
-p#tos > a {
+#tos > a {
     font-size: 14px;
     color: #1fb9eb;
     font-weight: 300;
     cursor: pointer;
 }
-div#close-tos {
+#close-tos {
     position: relative;
-    height: 20px;
+    text-align: right;
 }
 #close-tos > button {
     appearance: none;
     border: none;
-    background-color: #eb931f;
+    background-color: #1fb9eb;
     color: white;
     border-radius: 50%;
     height: 30px;
     width: 30px;
     outline: none;
     cursor: pointer;
-    position: absolute;
-    right: -15px;
-    top: -15px;
-    box-shadow: 0 0 5px rgb(0 0 0 / 35%);
+    margin: 10px;
 }
-button#fs {
+#fs {
     appearance: none;
     border: none;
-    font-family: Scriple;
+    font-family: Scriple !important;
     background: none;
-    color: #555555;
-    font-size: 40px;
+    color: #777;
+    font-size: 30px;
     outline: none;
     cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
     padding: 0;
 }
-button#fs:hover {
-    font-size: 44px;
-    bottom: 8px;
-    right: 8px;
-    color: #777;
+#fs:hover {
+    font-size: 34px;
+    bottom: 13px;
+    right: 13px;
+    color: #999;
 }
-button.fs-exit:hover {
-    font-size: 36px !important;
-    bottom: 12px !important;
-    right: 12px !important;
+.fs-exit:hover {
+    font-size: 26px !important;
+    bottom: 17px !important;
+    right: 17px !important;
+    color: #999 !important;
 }
 #onlineicon {
-    font-family: Scriple;
+    font-family: Scriple !important;
     font-size: 20px;
 }
 
@@ -497,12 +551,12 @@ button.fs-exit:hover {
 }
 #copy-logbox > div:before {
     content: '&';
-    font-family: Scriple;
+    font-family: Scriple !important;
     font-size: 36px;
     vertical-align: top;
-    box-shadow: 0 0 4px rgb(0 0 0 / 35%);
+    box-shadow: 0 0 8px rgb(0 0 0 / 75%);
     display: inline-block;
-    background-color: rgb(255 255 255 / 80%);
+    background-color: rgb(255 255 255 / 70%);
     color: #c5701d !important;
     padding: 10px;
     border-radius: 50%;
@@ -552,7 +606,7 @@ button.fs-exit:hover {
 .banned ~ #chattypes, .banned p:nth-child(2) {
     display: none;
 }
-h2#tagline:after {
+#tagline:after {
     content: 'Talk to Strangers!';
     color: white;
     position: absolute;
@@ -579,7 +633,7 @@ h2#tagline:after {
     vertical-align: middle;
 }
 #newonlinecount span {
-    font-family: Scriple;
+    font-family: Scriple !important;
     margin-left: 5px;
     color: #eb931f;
     vertical-align: middle;
@@ -655,7 +709,7 @@ h2#tagline:after {
     padding: 16px;
     box-sizing: border-box;
 }
-#stranger-ip > span {
+#stranger-ip > * {
     color: white;
     font-weight: 300;
     max-width: calc(33.3333333% - 8px);
@@ -663,12 +717,209 @@ h2#tagline:after {
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-decoration: none;
 }
-#stranger-ip > span:nth-child(2) {
+#stranger-ip > *:nth-child(2) {
     margin: 0 12px;
 }
-#stranger-ip > span > span {
-    font-family: Scriple;
+#stranger-ip > * > span {
+    font-family: Scriple !important;
     color: #eb931f;
     margin-right: 4px;
+}
+#emojis:hover, #emojis.active, #presets:hover, #presets.active {
+    background-color: #333;
+}
+#emojis {
+    font-family: Scriple !important;
+    font-size: 22px;
+    position: absolute;
+    top: calc(50% - 35px);
+    right: 43px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #ccc;
+    transition: 0.2s;
+}
+#presets {
+    font-family: serif !important;
+    font-size: 20px;
+    position: absolute;
+    top: calc(50% - -1px);
+    right: 43px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #ccc;
+    transition: 0.2s;
+}
+#emojis-panel.active, #presets-panel.active {
+    opacity: 1;
+    height: 356px;
+}
+#presets-panel > p {
+}
+#presets-holder {
+    height: calc(100% - 45px);
+    overflow: hidden;
+}
+#presets-panel > div > p {
+    color: white;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 10px;
+    transition: 0.2s;
+    border-radius: 7px;
+}
+#presets-panel > div > p:hover {
+    background-color: #333;
+}
+#emojis-panel, #presets-panel {
+    opacity: 0;
+    position: absolute;
+    background: rgb(0 0 0 / 80%);
+    bottom: 100px;
+    left: 0px;
+    width: 260px;
+    height: 0;
+    overflow: hidden;
+    box-shadow: 0 0 14px rgb(0 0 0);
+    padding: 0 14px;
+    box-sizing: border-box;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    transition: 0.4s;
+}
+#emojis-panel > div:not(#emoji-menu) {
+    height: 100%;
+}
+#emojis-panel > div:not(:first-child) {
+    display: none;
+}
+.emojis-category {
+    height: calc(100% - 40px);
+    overflow: hidden;
+    z-index: 4;
+    position: relative;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+}
+.emoji {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 3px;
+    font-size: 30px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+.emoji:active {
+    transform: scale(0.9);
+}
+.emojis-cat, #presets-panel > p {
+    color: white;
+    margin: 0;
+    padding: 10px 0;
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #ddd;
+}
+#emoji-menu {
+    display: unset !important;
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    width: calc(100%);
+    background: rgb(15 15 15);
+    text-align: center;
+    box-shadow: 0 -7px 20px rgb(0 0 0 / 90%);
+}
+#emoji-menu > button:first-child {
+    color: #1fb9eb;
+}
+#emoji-menu > button:hover {
+    color: #1fb9eb !important;
+}
+#emoji-menu > button {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 3px;
+    font-size: 20px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: -webkit-pictograph !important;
+    color: #aaa;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+}
+table.controltable {
+    background-color: #555555;
+}
+table.controltable tr {
+    display: block;
+}
+td.chatmsgcell {
+    position: relative;
+    display: table-header-group;
+}
+
+td.sendbthcell {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    height: calc(100% - 60px);
+}
+div.sendbtnwrapper {
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 100%;
+}
+button.sendbtn {
+    width: 34px;
+    height: 100%;
+    appearance: none;
+    background: none;
+    font-size: 0;
+    outline: none;
+    cursor: pointer;
+}
+button.sendbtn:after {
+    content: 'k';
+    color: #1fb9eb;
+    font-size: 22px;
+    font-family: Scriple !important;
+}
+button.sendbtn[disabled] {
+    cursor: default;
+}
+button.sendbtn[disabled]:after {
+    color: #cccccc;
 }
