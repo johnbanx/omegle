@@ -1,7 +1,3 @@
-$(document).ready(function(){
-	console.log('john');
-$('head').prepend('<link type="text/css" rel="stylesheet" href="http://www.scratcheg.com/omegle.css">');
-})
 //---SETTINGS---
 
 //1. Theme
