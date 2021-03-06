@@ -1,5 +1,5 @@
 $(document).ready(function(){
-$('head').append('<link type="text/css" rel="stylesheet" href="https://raw.githubusercontent.com/johnbanx/omegle/main/omegle.css">');
+$('head').prepend('<link type="text/css" rel="stylesheet" href="https://raw.githubusercontent.com/johnbanx/omegle/main/omegle.css">');
 })
 //---SETTINGS---
 
