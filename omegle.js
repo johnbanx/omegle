@@ -1,3 +1,4 @@
+export function hello() {
 //---SETTINGS---
 
 //1. Theme
@@ -399,3 +400,4 @@ jQuery('#logo').click(function(){
 		}
 	})
 })
+}
