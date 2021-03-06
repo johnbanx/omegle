@@ -1,3 +1,5 @@
+$('head').append('<link type="text/css" rel="stylesheet" href="/static/style.css?104">');
+
 //---SETTINGS---
 
 //1. Theme
