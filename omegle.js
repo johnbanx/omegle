@@ -1,14 +1,30 @@
-//---SETTINGS---
+/*--------------------------------------------------------------
+>>> CREDITS
+--------------------------------------------------------------*/
+/*
+Author: John Banks
+Facebook / Instagram / YouTube: @johnbanx
+Company: Scratch for Web Development
+URI: http://scratcheg.com/
+Version: 1.0
+*/
 
-//1. Theme
-//Choose between 'light' or 'dark' theme (default is light);
+/*--------------------------------------------------------------
+>>> SETTINGS
+--------------------------------------------------------------*/
+/*
+1. Theme
+Choose between 'light' or 'dark' theme (default is light)
+*/
 var theme = 'dark';
 
-//2. Social Media
-//Change @username to your social media username.
-//Change the number at the end for the font size, 24 is the default.
-//Tip: You can group social medias that has the same username by typing them after each others and seperate them with a SPACE.
-//Example: 'facebook instagram: @username'.
+/*
+2. Social Media
+Change @username to your social media username.
+Change the number at the end for the font size, 24 is the default.
+Tip: You can group social medias that has the same username by typing them after each others and seperate them with a SPACE.
+Example: 'facebook instagram: @username'
+*/
 var socials = [
 	'facebook: @johnbanxmagic, 18',
 	'instagram: @johnbanx',
@@ -17,13 +33,17 @@ var socials = [
 	//'youtube: @username',            /*REMOVE (//) TO ENABLE*/
 ];
 
-//3. Social Media Animation
-//Choose between true or false to start or stop social animation
+/*
+3. Social Media Animation
+Choose between true or false to start or stop social animation
+*/
 var social_animation = true;
 
-//Text Presets
-//WARNING: Do NOT use double quotes (") within the text
-//Tip: use (\n) for new line
+/*
+4. Text Presets
+WARNING: Do NOT use double quotes (") within the text
+Tip: use (\n) for new line
+*/
 var presets = [
 	"youtube.com/user/johnbanx\nInstagram @johnbanx",
 	"Love 😍 from Egypt",
@@ -33,26 +53,31 @@ var presets = [
 	"I'm from Egypt",
 	"Have a good day 😍",
 	"Enjoy the rest of your day 😍",
+	"Can you name any card? 🎴🃏♠️♥️♣️♦",
 ];
 
-//---END OF SETTINGS---
+/*--------------------------------------------------------------
+>>> END OF SETTINGS
+--------------------------------------------------------------*/
 
-jQuery('#videobtn').click(function() {
-	if (jQuery('#othervideocontainer1').length === 0) {
-		//jQuery('.chatmsgcell').insertBefore('.disconnectbtncell');
-		jQuery('#videowrapper > *:not("#selfvideo")').wrapAll(
+$('body').addClass(theme).show();
+
+$('#videobtn').click(function() {
+	if ($('#othervideocontainer1').length === 0) {
+		//$('.chatmsgcell').insertBefore('.disconnectbtncell');
+		$('#videowrapper > *:not("#selfvideo")').wrapAll(
 			'<div id="othervideocontainer1">'+
 				'<div id="othervideocontainer2"></div>'+
 			'</div>'
 		)
-		jQuery('#selfvideo').wrap(
+		$('#selfvideo').wrap(
 			'<div id="selfvideocontainer1">'+
 				'<div id="selfvideocontainer2"></div>'+
 			'</div>'
 		)
-		jQuery('#videowrapper').append('<button id="fs">[</button>');
-		jQuery('#videowrapper > *').wrapAll('<div id="fs-container"></div>')
-		jQuery('#selfvideocontainer2').append('<div class="user-data"></div>'
+		$('#videowrapper').append('<button id="fs">[</button>');
+		$('#videowrapper > *').wrapAll('<div id="fs-container"></div>')
+		$('#selfvideocontainer2').append('<div class="user-data"></div>'
 		);
 		socials.forEach(mySocials);
 		function mySocials(social) {
@@ -63,7 +88,7 @@ jQuery('#videobtn').click(function() {
 			for (i = 1; i <= socialName.length; i++){
 				iconSpans += '<span class="icon '+socialName[i-1]+'"></span>'
 			}
-			jQuery('.user-data').append(
+			$('.user-data').append(
 				'<div>'+
 					iconSpans+
 					'<span class="text" style="font-size: '+socialFont+'px"><span>'+socialValue+'</span></span>'+
@@ -73,8 +98,8 @@ jQuery('#videobtn').click(function() {
 		if(social_animation){
 			$('.user-data > div> .text').css('width', '0').css('animation', 'social 60s infinite');
 		}
-		jQuery('#othervideocontainer2').append('<div id="stranger-ip"></div>');
-		jQuery('#othervideocontainer1').append('<div id="log-container"><div id="copy-logbox"></div><div id="chat-status"></div></div>');
+		$('#othervideocontainer2').append('<div id="stranger-ip"></div>');
+		$('#othervideocontainer1').append('<div id="log-container"><div id="copy-logbox"></div><div id="chat-status"></div></div>');
 		var divheight = 6;
 		var newdivheight;
 		var waitTime = 0;
@@ -123,7 +148,7 @@ jQuery('#videobtn').click(function() {
 			}
 			var presetsItems=''
 			for (i = 1; i <= presets.length; i++){
-				presetsItems+='<p title="'+presets[i-1]+'">'+presets[i-1]+'</p>'
+				presetsItems+='<li title="'+presets[i-1]+'">'+presets[i-1]+'</li>'
 			}
 			function removeEmojis(string) {
 			  var regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g;
@@ -148,7 +173,7 @@ jQuery('#videobtn').click(function() {
 		    		'<div id="emojis-panel">'+
 		    		emojiSpans+'<div id="emoji-menu">'+emojiMenu+'</div>'+
 		    		'</div>'+
-		    		'<div id="presets-panel"><p>Text Presets</p><div id="presets-holder">'+presetsItems+'</div>'+
+		    		'<div id="presets-panel"><p>Text Presets</p><ul id="presets-holder">'+presetsItems+'</ul>'+
 		    		'</div>'
 	    		);
 			    $('#emojis').click(function(e){
@@ -254,7 +279,7 @@ jQuery('#videobtn').click(function() {
 				}
 		    }
 		    else if($('.chatmsg[disabled]').length == 1) {
-		    	$('#presets, #emojis, #emojis-panel').remove();
+		    	$('#presets, #emojis, #emojis-panel, #presets-panel').remove();
 		    }
 		}
 		
@@ -278,7 +303,7 @@ jQuery('#videobtn').click(function() {
 		    document.msExitFullscreen();
 		  }
 		}
-		jQuery('#fs').click(function(){
+		$('#fs').click(function(){
 			if(fsStatus === 0) {
 				openFullscreen(this.parentElement.parentElement);
 			} else {
@@ -367,24 +392,24 @@ jQuery('#videobtn').click(function() {
 		}
 	}
 })
-jQuery(document).ready(function(){
-	if (jQuery('#tos').length==0 && jQuery('#footer').length) {
-		jQuery('#intro').append('<p id="tos"><a>Terms of Service</a></p>');
-		jQuery('#footer').prepend('<div id="close-tos"><button>✕</button></div>');
+$(document).ready(function(){
+	if ($('#tos').length==0 && $('#footer').length) {
+		$('#intro').append('<p id="tos"><a>Terms of Service</a></p>');
+		$('#footer').prepend('<div id="close-tos"><button>✕</button></div>');
 	}
-	jQuery('#tos > a').click(function(){
-		jQuery('#footer').fadeIn();
+	$('#tos > a').click(function(){
+		$('#footer').fadeIn();
 	})
-	jQuery('body, #close-tos > button').click(function(){
-		jQuery('#footer').fadeOut();
+	$('body, #close-tos > button').click(function(){
+		$('#footer').fadeOut();
 		
 	})
-	jQuery('#footer, #tos > a').click(function(e){
+	$('#footer, #tos > a').click(function(e){
 		e.stopPropagation();
 		
 	})
 	if($('#newonlinecount').length == 0){
-		jQuery('#header').append('<div id="newonlinecount"><strong></strong><span>|</span></div>');
+		$('#header').append('<div id="newonlinecount"><strong></strong><span>|</span></div>');
 	}
 	var waitTime = 0;
 	var onlinecountinterval = setInterval(timerIncrement3, 500);
@@ -392,10 +417,10 @@ jQuery(document).ready(function(){
 	    $('#newonlinecount > strong').html($('#onlinecount > strong').html());
 	}
 })
-jQuery('#logo').click(function(){
-	jQuery(document).ready(function(){
-		if (jQuery('#footer').length==0) {
-			jQuery('#tos').remove();
+$('#logo').click(function(){
+	$(document).ready(function(){
+		if ($('#footer').length==0) {
+			$('#tos').remove();
 		}
 	})
 })
