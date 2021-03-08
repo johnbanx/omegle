@@ -1,28 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+/*@font-face {
+  font-family: 'Scriple';
+  src: url('https://usaupload.com/1jpS/ScripleRegular.eot'); // IE9 Compat Modes
+  src: url('https://usaupload.com/1jpS/ScripleRegular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+       url('https://usaupload.com/1jpS/ScripleRegular.woff2') format('woff2'), // Super Modern Browsers
+       url('https://usaupload.com/1jpS/ScripleRegular.woff') format('woff'), // Pretty Modern Browsers
+       url('https://usaupload.com/1jpS/ScripleRegular.ttf')  format('truetype'), // Safari, Android, iOS
+       url('https://usaupload.com/1jpS/ScripleRegular.svg#svgFontName') format('svg'); // Legacy iOS
+}*/
+
 #tagline img, #sharebuttons, div.newchatbtnwrapper, .statuslog span, .logsavelinks, input.shoulduselikescheckbox, #logo img {
     display: none;
 }
 body {
-    background-color: #111;
+	display: none;
+    background-color: #eee;
+    color: black;
     overflow-x: hidden;
     font-family: 'Lato', Sans-Serif;
     height: unset !important;
     min-height: unset !important;
     inset: unset !important;
 }
-* {
+body.dark {
+    background-color: #111;
+    color: white;
+}
+.chatmsg, .emoji, #presets-panel {
     font-family: "Segoe UI Emoji","Segoe UI Symbol", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji" !important;
 }
 #header {
     box-shadow: none !important;
-    background-color: #000 !important;
+    background-color: white !important;
     height: 40px !important;
+    z-index: 2;
+    position: relative;
+}
+.dark #header {
+    background-color: black !important;
 }
 #logo canvas {
-    filter: invert(1) brightness(1.5) saturate(0.8);
     height: 99px !important;
     width: 170px !important;
     margin-top: -30px !important;
     margin-left: -40px !important;
+}
+.dark #logo canvas {
+    filter: invert(1) brightness(1.3) saturate(1.1);
 }
 #onlinecount {
     display: none;
@@ -33,10 +57,9 @@ body {
 }
 .logwrapper {
     margin-left: unset !important;
-    background-color: rgb(51, 51, 51) !important;
+    background-color: #eee !important;
     border: none !important;
     border-radius: 0px !important;
-    color: white !important;
     top: unset !important;
     margin-right: unset !important;
     position: relative !important;
@@ -45,6 +68,9 @@ body {
     bottom: unset !important;
     margin-bottom: unset !important;
     height: calc(100% - 160px);
+}
+.dark .logwrapper {
+    background-color: #333 !important;
 }
 .controlwrapper {
     margin-left: unset !important;
@@ -55,27 +81,32 @@ body {
 }
 .chatmsgwrapper {
     position: relative;
-    background-color: #555 !important;
+    background-color: #ddd !important;
     border: none !important;
     padding: 10px;
     height: 80px !important;
 }
+.dark .chatmsgwrapper {
+    background-color: #555 !important;
+}
 textarea.chatmsg[disabled] {
-    background-color: #4d4d4d !important;
     box-shadow: none;
 }
 textarea.chatmsg {
-    box-shadow: inset 0 0 6px rgb(0 0 0 / 10%);
-    background-color: #444 !important;
-    color: white !important;
+    box-shadow: inset 0 0 6px rgb(0 0 0 / 22%);
+    background-color: #ccc !important;
     resize: none !important;
     width: calc(100% - 29px);
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 3px;
     padding-right: 40px;
     box-sizing: border-box;
     overflow: hidden;
     height: 80px;
+}
+.dark textarea.chatmsg {
+    background-color: #444 !important;
+    color: white !important;
 }
 .logtopicsettings a {
     color: #6cb5ff !important;
@@ -109,10 +140,10 @@ textarea.chatmsg {
     direction: rtl;
 }
 .youmsg:before {
-    color: #6cb5ff !important;
+    color: #3f9fff !important;
 }
 .strangermsg:before {
-    color: #c5701d !important;
+    color: #ff7f00 !important;
 }
 .youmsg:before, .strangermsg:before {
     content: '&';
@@ -121,17 +152,17 @@ textarea.chatmsg {
     vertical-align: top;
     box-shadow: 0 0 4px rgb(0 0 0 / 35%);
     display: inline-block;
-    background-color: rgb(255 255 255 / 80%);
+    background-color: rgb(255 255 255);
     padding: 10px;
     border-radius: 50%;
     width: 21px;
     height: 21px;
 }
 .youmsg span {
-    background-color: rgb(108 181 255 / 80%);
+    background-color: rgb(63 159 255 / 60%);
 }
 .strangermsg span {
-    background-color: rgb(197 112 29 / 80%);
+    background-color: rgb(255 127 0 / 60%);
 }
 .emojis-only {
     background-color: transparent !important;
@@ -156,7 +187,8 @@ textarea.chatmsg {
     background-color: #333333 !important;
     border: none !important;
     margin-right: unset !important;
-    border-radius: 25px !important;
+    border-radius: 6px !important;
+    background: linear-gradient(0deg, #111, #333);
 }
 button.disconnectbtn {
     color: white !important;
@@ -176,6 +208,9 @@ button.disconnectbtn {
     inset: unset !important;
     right: 0px !important;
     overflow: auto;
+    background-color: #ddd;
+}
+.dark #videowrapper {
     background-color: #111;
 }
 #fs-container {
@@ -197,6 +232,7 @@ button.disconnectbtn {
     width: 260px!important;
     height: calc(100vh - 56px)!important;
     left: -0 !important;
+    box-shadow: 0 0 6px rgb(0 0 0 / 35%);
 }
 .chatbox.expanded {
     left: 0 !important;
@@ -251,7 +287,6 @@ td.disconnectbtncell {
 }
 .user-data {
     position: absolute;
-    color: white;
     padding: 10px 0;
     line-height: 45px;
     right: 0;
@@ -372,30 +407,46 @@ td.disconnectbtncell {
     background: transparent;
     border: none;
     box-shadow: none;
-    color: white;
     max-width: 720px;
     width: unset !important;
     margin: 20px auto !important;
     padding: 0 20px !important;
 }
+#intro:before {
+    content: '';
+    display: block;
+    height: 40px;
+    background-image: url(https://www.omegle.com/static/dotcomlogoshadow.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    filter: invert(1) brightness(1.3) saturate(1.1);;
+}
+.dark #intro:before {
+	filter: unset;
+}
 #mobilesitenote {
     line-height: unset !important;
     height: unset !important;
-    color: #999;
-    font-size: 18px !important;
+    color: #555;
     margin: 30px 0 !important;
 }
 #topterms {
-    color: #999;
+    color: #aaa;
+}
+.dark #mobilesitenote .dark #topterms {
+    color: #aaa;
 }
 #monitoringnotice {
-    background-color: #eb931f;
+    background-color: #ff7f00;
     border: none;
     box-shadow: none;
     color: black;
 }
 #monitoringnotice h2 {
-    background-color: #eb931f;
+    background-color: #ff7f00;
+    border-radius: 6px !important;
+    line-height: unset !important;
+    padding: 10px !important;
 }
 #monitoringnotice a {
     color: white;
@@ -416,12 +467,13 @@ td.disconnectbtncell {
 }
 #chattypevideocell > img {
     opacity: 0;
-    width: 90px;
-    height: 90px;
+    width: 130px;
+    height: 50px;
 }
 #chattypevideocell:after {
     content: 'Video Chat';
-    padding: 20px;
+    padding: 13px;
+    box-sizing: border-box;
     background: #409ffe;
     background-image: -o-linear-gradient(top,#80c0ff 0,#017ffe 100%);
     background-image: -moz-linear-gradient(top,#80c0ff 0,#017ffe 100%);
@@ -432,10 +484,10 @@ td.disconnectbtncell {
     color: #fff;
     display: inline-block;
     height: 50px;
-    width: 50px;
-    border-radius: 50%;
+    width: 130px;
+    border-radius: 6px;
     font-weight: 300;
-    font-size: 18px;
+    font-weight: 700;
     position: absolute;
     top: 0;
     left: 0;
@@ -448,12 +500,13 @@ input.newtopicinput {
 }
 #footer {
     display: none;
-    margin: 0 310px 60px;
+    margin: 0 50px 60px;
     text-align: justify;
     background-color: white;
     position: absolute;
     top: 65px;
     border-radius: 20px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 25%);
 }
 #feedback {
     height: calc(100vh - 150px);
@@ -467,14 +520,14 @@ input.newtopicinput {
     color: #333 !important;
 }
 #feedback a {
-    color: #1fb9eb;
+    color: #3f9fff;
 }
 #tos {
     text-align: center;
 }
 #tos > a {
     font-size: 14px;
-    color: #1fb9eb;
+    color: #3f9fff;
     font-weight: 300;
     cursor: pointer;
 }
@@ -485,7 +538,7 @@ input.newtopicinput {
 #close-tos > button {
     appearance: none;
     border: none;
-    background-color: #1fb9eb;
+    background-color: #3f9fff;
     color: white;
     border-radius: 50%;
     height: 30px;
@@ -554,10 +607,10 @@ input.newtopicinput {
     font-family: Scriple !important;
     font-size: 36px;
     vertical-align: top;
-    box-shadow: 0 0 8px rgb(0 0 0 / 75%);
+    box-shadow: 0 0 8px rgb(0 0 0 / 60%);
     display: inline-block;
-    background-color: rgb(255 255 255 / 70%);
-    color: #c5701d !important;
+    background: radial-gradient(at 70% 20% , #fff 35%, #ddd 60%, #aaa 90%);
+    color: #ff7f00 !important;
     padding: 10px;
     border-radius: 50%;
     width: 36px;
@@ -608,7 +661,6 @@ input.newtopicinput {
 }
 #tagline:after {
     content: 'Talk to Strangers!';
-    color: white;
     position: absolute;
     top: 0;
     left: calc(50% - 102px);
@@ -627,7 +679,7 @@ input.newtopicinput {
     top: 4px !important;
 }
 #newonlinecount strong {
-    color: #1fb9eb;
+    color: #3f9fff;
     font-size: 36px;
     font-weight: 300;
     vertical-align: middle;
@@ -635,7 +687,7 @@ input.newtopicinput {
 #newonlinecount span {
     font-family: Scriple !important;
     margin-left: 5px;
-    color: #eb931f;
+    color: #ff7f00;
     vertical-align: middle;
 }
 
@@ -644,11 +696,11 @@ input.newtopicinput {
     width: 30px !important;
     height: 27px !important;
     border-radius: 50%!important;
-    background: white !important;
+    background: radial-gradient(at 30% 80% , #fff 25%, #ddd 70%, #aaa 90%);
     top: -14px !important;
     left: 42px !important;
     padding: 0 !important;
-    filter: drop-shadow(0 0 3px rgb(0 0 0 / 35%)) !important;
+    filter: drop-shadow(0 3px 3px rgb(0 0 0 / 30%)) !important;
 }
 #copy-logbox #typing-container:before {
     content: '';
@@ -663,7 +715,7 @@ input.newtopicinput {
     padding: 0;
     position: absolute;
     top: 4px;
-    left: 7px;
+    left: 6px;
     line-height: 0;
     font-size: 28px;
     color: #555;
@@ -688,20 +740,28 @@ input.newtopicinput {
     outline: none;
     width: 100%;
     height: 50px;
-    border-radius: 25px;
+    border-radius: 6px;
     cursor: pointer;
 }
 .logbox .statuslog {
+    color: #555;
+}
+.dark .logbox .statuslog {
     color: #aaa;
 }
 .logtopicsettings > div > div:last-child {
     display: none;
 }
+td #topicsettingscontainer, td #intoheader {
+    padding-right: 15px;
+}
 .topictageditor.needsclick {
     margin: 0;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 6px !important;
+    padding: 5px !important;
     box-sizing: border-box;
+    height: 50px;
+    border: 1px solid rgb(0 0 0 / 20%);
 }
 #stranger-ip {
     position: absolute;
@@ -724,17 +784,20 @@ input.newtopicinput {
 }
 #stranger-ip > * > span {
     font-family: Scriple !important;
-    color: #eb931f;
+    color: #ff7f00;
     margin-right: 4px;
 }
 #emojis:hover, #emojis.active, #presets:hover, #presets.active {
+    background-color: #999;
+}
+.dark #emojis:hover, .dark #emojis.active, .dark #presets:hover, .dark #presets.active {
     background-color: #333;
 }
 #emojis {
     font-family: Scriple !important;
     font-size: 22px;
     position: absolute;
-    top: calc(50% - 35px);
+    bottom: calc(50% - 35px);
     right: 43px;
     width: 34px;
     height: 34px;
@@ -744,38 +807,41 @@ input.newtopicinput {
     border: none;
     outline: none;
     cursor: pointer;
-    color: #ccc;
+    color: #fff;
     transition: 0.2s;
 }
 #presets {
     font-family: serif !important;
-    font-size: 20px;
+    font-size: 22px;
     position: absolute;
-    top: calc(50% - -1px);
+    top: calc(50% - 35px);
     right: 43px;
     width: 34px;
     height: 34px;
+    padding: 5px;
     border-radius: 50%;
     appearance: none;
     background: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-    color: #ccc;
+    color: #fff;
     transition: 0.2s;
+}
+.dark #emojis, .dark #presets {
+	color: #ccc;
 }
 #emojis-panel.active, #presets-panel.active {
     opacity: 1;
     height: 356px;
 }
-#presets-panel > p {
-}
 #presets-holder {
     height: calc(100% - 45px);
     overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
-#presets-panel > div > p {
-    color: white;
+#presets-panel > ul > li {
     font-size: 14px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -785,25 +851,33 @@ input.newtopicinput {
     padding: 10px;
     transition: 0.2s;
     border-radius: 7px;
+    list-style: inside;
 }
-#presets-panel > div > p:hover {
+#presets-panel > ul > li:hover {
+    background-color: #eee;
+}
+.dark #presets-panel > ul > li:hover {
     background-color: #333;
 }
 #emojis-panel, #presets-panel {
     opacity: 0;
     position: absolute;
-    background: rgb(0 0 0 / 80%);
+    background: rgb(255 255 255 / 85%);
     bottom: 100px;
     left: 0px;
     width: 260px;
     height: 0;
     overflow: hidden;
-    box-shadow: 0 0 14px rgb(0 0 0);
+    box-shadow: 0 0 14px rgb(0 0 0 / 30%);
     padding: 0 14px;
     box-sizing: border-box;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     transition: 0.4s;
+}
+.dark #emojis-panel, .dark #presets-panel {
+    background: rgb(0 0 0 / 95%);
+    box-shadow: 0 0 14px rgb(0 0 0);
 }
 #emojis-panel > div:not(#emoji-menu) {
     height: 100%;
@@ -836,7 +910,6 @@ input.newtopicinput {
     transform: scale(0.9);
 }
 .emojis-cat, #presets-panel > p {
-    color: white;
     margin: 0;
     padding: 10px 0;
     height: 20px;
@@ -844,6 +917,9 @@ input.newtopicinput {
     overflow: hidden;
     white-space: nowrap;
     font-size: 14px;
+    color: #444;
+}
+.dark .emojis-cat, .dark #presets-panel > p {
     color: #ddd;
 }
 #emoji-menu {
@@ -853,15 +929,19 @@ input.newtopicinput {
     bottom: 0;
     left: 0;
     width: calc(100%);
-    background: rgb(15 15 15);
     text-align: center;
+    background: rgb(252 252 252);
+    box-shadow: 0 -7px 20px rgb(0 0 0 / 30%);
+}
+.dark #emoji-menu {
+    background: rgb(15 15 15);
     box-shadow: 0 -7px 20px rgb(0 0 0 / 90%);
 }
 #emoji-menu > button:first-child {
-    color: #1fb9eb;
+    color: #3f9fff;
 }
 #emoji-menu > button:hover {
-    color: #1fb9eb !important;
+    color: #3f9fff !important;
 }
 #emoji-menu > button {
     width: 40px;
@@ -880,7 +960,10 @@ input.newtopicinput {
     outline: none;
 }
 table.controltable {
-    background-color: #555555;
+    background-color: #ddd;
+}
+.dark table.controltable {
+    background-color: #555;
 }
 table.controltable tr {
     display: block;
@@ -913,7 +996,7 @@ button.sendbtn {
 }
 button.sendbtn:after {
     content: 'k';
-    color: #1fb9eb;
+    color: #3f9fff;
     font-size: 22px;
     font-family: Scriple !important;
 }
@@ -921,5 +1004,8 @@ button.sendbtn[disabled] {
     cursor: default;
 }
 button.sendbtn[disabled]:after {
-    color: #cccccc;
+    color: #fff;
+}
+.dark button.sendbtn[disabled]:after {
+    color: #ccc;
 }
